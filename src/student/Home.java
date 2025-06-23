@@ -1,8 +1,12 @@
 package student;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -10,10 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class Home extends javax.swing.JFrame {
 
+    Student student = new Student();
     int xx, xy;
-
+    private DefaultTableModel model;
     public Home() {
         initComponents();
+        init();
     }
 
     /**
@@ -232,6 +238,7 @@ public class Home extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
         jDateChooser1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jComboBox1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -240,6 +247,11 @@ public class Home extends javax.swing.JFrame {
         jTextField3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jTextField4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jTextField5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
@@ -493,9 +505,17 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Student ID", "Student Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2"
+                "Student ID", "Student Name", "Date of Birth", "Gender", "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -520,6 +540,11 @@ public class Home extends javax.swing.JFrame {
 
         btnAdd.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnAdd.setText("Add New");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
@@ -532,6 +557,11 @@ public class Home extends javax.swing.JFrame {
 
         btnClear.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnLogout.setText("Logout");
@@ -1132,13 +1162,10 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(jLabel57))
                             .addComponent(jLabel52)
                             .addComponent(jLabel55)
-                            .addGroup(jPanel20Layout.createSequentialGroup()
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel50)
-                                    .addComponent(jLabel51)
-                                    .addComponent(jLabel53)
-                                    .addComponent(jLabel54))
-                                .addGap(13, 13, 13)))
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel51)
+                            .addComponent(jLabel53)
+                            .addComponent(jLabel54))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel20Layout.createSequentialGroup()
@@ -1657,6 +1684,83 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void init(){
+        tableViewStudent();
+        jTextField1.setText(String.valueOf(student.getMax()));
+    }
+    
+    private void tableViewStudent(){
+        model = (DefaultTableModel) jTable1.getModel();
+        jTable1.setRowHeight(30);
+        jTable1.setShowGrid(true);
+        jTable1.setGridColor(Color.black);
+        jTable1.setBackground(Color.white);
+    }
+    
+    private void clearStudent(){
+        jTextField1.setText(String.valueOf(student.getMax()));
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+        jTextField5.setText(null);
+        jTextField6.setText(null);
+        jTextField7.setText(null);
+        jTextField8.setText(null);
+        jDateChooser1.setDate(null);
+        jComboBox1.setSelectedIndex(0);
+        jLabelImage.setIcon(null);
+        jTable1.clearSelection();
+    }
+    
+    public boolean isEmptyStudent(){
+        if(jTextField2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Student name is missing");
+            return false;
+        }
+        if(jDateChooser1.getDate()==null){
+            JOptionPane.showMessageDialog(this, "Student date of birth is missing");
+            return false;
+        }
+        if(jDateChooser1.getDate().compareTo(new Date())>0){
+            JOptionPane.showMessageDialog(this, "No student from the future are allowed");
+            return false;
+        }
+        if(jTextField3.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Student email address is missing");
+            return false;
+        }
+        if(!jTextField3.getText().matches("^.+@.+\\..+$")){
+            JOptionPane.showMessageDialog(this, "Invalid email address");
+            return false;
+        }
+        if(jTextField4.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Student phone number is missing");
+            return false;
+        }
+        if(jTextField4.getText().length()>=11){
+            JOptionPane.showMessageDialog(this, "Phone number is too long");
+            return false;
+        }
+        if(jTextField5.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Student father name is missing");
+            return false;
+        }
+        if(jTextField6.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Student mother name is missing");
+            return false;
+        }
+        if(jTextField7.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Address line 1 is missing");
+            return false;
+        }
+         if(jTextField8.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Address line 2 is missing");
+            return false;
+        }
+        return true;
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -1724,6 +1828,25 @@ public class Home extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        clearStudent();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        if(isEmptyStudent()){
+            int id = student.getMax();
+            String name = jTextField2.getText();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        if(!Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments
