@@ -1,11 +1,20 @@
 package student;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.print.PrinterException;
+import java.io.File;
+import java.text.MessageFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,7 +25,10 @@ public class Home extends javax.swing.JFrame {
 
     Student student = new Student();
     int xx, xy;
+    private String imagePath;
     private DefaultTableModel model;
+    private int rowIndex;
+
     public Home() {
         initComponents();
         init();
@@ -308,6 +320,11 @@ public class Home extends javax.swing.JFrame {
         btnBrowse.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnBrowse.setForeground(new java.awt.Color(0, 0, 0));
         btnBrowse.setText("Browse");
+        btnBrowse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseActionPerformed(evt);
+            }
+        });
 
         jPanel7.setBackground(new java.awt.Color(127, 170, 255));
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
@@ -342,7 +359,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBrowse)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(90, 90, 90)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -355,7 +372,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(66, 66, 66)
                         .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE))
+                        .addGap(0, 80, Short.MAX_VALUE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -403,13 +420,16 @@ public class Home extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
@@ -465,10 +485,20 @@ public class Home extends javax.swing.JFrame {
         btnSearch.setMaximumSize(new java.awt.Dimension(112, 40));
         btnSearch.setMinimumSize(new java.awt.Dimension(112, 40));
         btnSearch.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnRefresh.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -516,6 +546,11 @@ public class Home extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -548,12 +583,27 @@ public class Home extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnPrint.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnPrint.setText("Print");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
 
         btnClear.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnClear.setText("Clear");
@@ -830,7 +880,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         jPanel15.setBackground(new java.awt.Color(0, 0, 51));
@@ -1319,7 +1369,7 @@ public class Home extends javax.swing.JFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1555,7 +1605,7 @@ public class Home extends javax.swing.JFrame {
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1684,22 +1734,22 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void init(){
+    public void init() {
         tableViewStudent();
         jTextField1.setText(String.valueOf(student.getMax()));
     }
-    
-    private void tableViewStudent(){
+
+    private void tableViewStudent() {
+        student.getStudentValue(jTable1, "");
         model = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowHeight(30);
         jTable1.setShowGrid(true);
         jTable1.setGridColor(Color.black);
         jTable1.setBackground(Color.white);
     }
-    
-    private void clearStudent(){
+
+    private void clearStudent() {
         jTextField1.setText(String.valueOf(student.getMax()));
-        jTextField1.setText(null);
         jTextField2.setText(null);
         jTextField3.setText(null);
         jTextField4.setText(null);
@@ -1711,56 +1761,61 @@ public class Home extends javax.swing.JFrame {
         jComboBox1.setSelectedIndex(0);
         jLabelImage.setIcon(null);
         jTable1.clearSelection();
+        imagePath = null;
     }
-    
-    public boolean isEmptyStudent(){
-        if(jTextField2.getText().isEmpty()){
+
+    public boolean isEmptyStudent() {
+        if (jTextField2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student name is missing");
             return false;
         }
-        if(jDateChooser1.getDate()==null){
+        if (jDateChooser1.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Student date of birth is missing");
             return false;
         }
-        if(jDateChooser1.getDate().compareTo(new Date())>0){
+        if (jDateChooser1.getDate().compareTo(new Date()) > 0) {
             JOptionPane.showMessageDialog(this, "No student from the future are allowed");
             return false;
         }
-        if(jTextField3.getText().isEmpty()){
+        if (jTextField3.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student email address is missing");
             return false;
         }
-        if(!jTextField3.getText().matches("^.+@.+\\..+$")){
+        if (!jTextField3.getText().matches("^.+@.+\\..+$")) {
             JOptionPane.showMessageDialog(this, "Invalid email address");
             return false;
         }
-        if(jTextField4.getText().isEmpty()){
+        if (jTextField4.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student phone number is missing");
             return false;
         }
-        if(jTextField4.getText().length()>=11){
+        if (jTextField4.getText().length() >= 11) {
             JOptionPane.showMessageDialog(this, "Phone number is too long");
             return false;
         }
-        if(jTextField5.getText().isEmpty()){
+        if (jTextField5.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student father name is missing");
             return false;
         }
-        if(jTextField6.getText().isEmpty()){
+        if (jTextField6.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Student mother name is missing");
             return false;
         }
-        if(jTextField7.getText().isEmpty()){
+        if (jTextField7.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Address line 1 is missing");
             return false;
         }
-         if(jTextField8.getText().isEmpty()){
+        if (jTextField8.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Address line 2 is missing");
+            return false;
+        }
+        if (imagePath == null) {
+            JOptionPane.showMessageDialog(this, "Please add your image");
             return false;
         }
         return true;
     }
-    
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -1834,19 +1889,194 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(isEmptyStudent()){
-            int id = student.getMax();
-            String name = jTextField2.getText();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            
+        if (isEmptyStudent()) {
+            if (!student.isEmailExist(jTextField3.getText())) {
+                if (!student.isPhoneExist(jTextField4.getText())) {
+                    int id = student.getMax();
+                    String name = jTextField2.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String data = dateFormat.format(jDateChooser1.getDate());
+                    String gender = jComboBox1.getSelectedItem().toString();
+                    String email = jTextField3.getText();
+                    String phone = jTextField4.getText();
+                    String father = jTextField5.getText();
+                    String mother = jTextField6.getText();
+                    String address1 = jTextField7.getText();
+                    String address2 = jTextField8.getText();
+                    student.insert(id, name, data, gender, email, phone, father, mother, address1, address2, imagePath);
+                    jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
+                        "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
+                    student.getStudentValue(jTable1, "");
+                    clearStudent();
+                } else {
+                    JOptionPane.showMessageDialog(this, "This phone number already exists");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "This email address already exists");
+            }
+
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-        if(!Character.isDigit(evt.getKeyChar())){
+        if (!Character.isDigit(evt.getKeyChar())) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void btnBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseActionPerformed
+        JFileChooser file = new JFileChooser();
+        file.setCurrentDirectory(new File(System.getProperty("user.home")));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("*.image", "jpg", "gif", "png");
+        file.addChoosableFileFilter(filter);
+        int output = file.showSaveDialog(file);
+        if (output == JFileChooser.APPROVE_OPTION) {
+            File selectFile = file.getSelectedFile();
+            String path = selectFile.getAbsolutePath();
+            jLabelImage.setIcon(imageAdjust(path, null));
+            imagePath = path;
+        } else {
+            JOptionPane.showMessageDialog(this, "No Image selected");
+        }
+    }//GEN-LAST:event_btnBrowseActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        if (isEmptyStudent()) {
+            int id = Integer.parseInt(jTextField1.getText());
+            if (student.isIdExist(id)) {
+                if (!check()) {
+                    String name = jTextField2.getText();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String data = dateFormat.format(jDateChooser1.getDate());
+                    String gender = jComboBox1.getSelectedItem().toString();
+                    String email = jTextField3.getText();
+                    String phone = jTextField4.getText();
+                    String father = jTextField5.getText();
+                    String mother = jTextField6.getText();
+                    String address1 = jTextField7.getText();
+                    String address2 = jTextField8.getText();
+                    student.update(id, name, data, gender, email, phone, father, mother, address1, address2, imagePath);
+                    jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
+                        "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
+                    student.getStudentValue(jTable1, "");
+                    clearStudent();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Student id doesn't exist");
+            }
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    public boolean check() {
+        String newEmail = jTextField3.getText();
+        String newPhone = jTextField4.getText();
+        String oldEmail = model.getValueAt(rowIndex, 4).toString();
+        String oldPhone = model.getValueAt(rowIndex, 5).toString();
+        if (newEmail.equals(oldEmail) && newPhone.equals(oldPhone)) {
+            return false;
+        } else {
+            if (!newEmail.equals(oldEmail)) {
+                boolean x = student.isEmailExist(newEmail);
+                if (x) {
+                    JOptionPane.showMessageDialog(this, "This email already exists");
+                }
+                return x;
+            }
+            if (!newPhone.equals(oldPhone)) {
+                boolean x = student.isPhoneExist(newPhone);
+                if (x) {
+                    JOptionPane.showMessageDialog(this, "This phone number already exists");
+                }
+                return x;
+            }
+        }
+        return false;
+    }
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        model = (DefaultTableModel) jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        jTextField1.setText(model.getValueAt(rowIndex, 0).toString());
+        jTextField2.setText(model.getValueAt(rowIndex, 1).toString());
+
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex, 2).toString());
+            jDateChooser1.setDate(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String gender = model.getValueAt(rowIndex, 3).toString();
+        if (gender.equals("Male")) {
+            jComboBox1.setSelectedIndex(0);
+        } else {
+            jComboBox1.setSelectedIndex(1);
+        }
+        jTextField3.setText(model.getValueAt(rowIndex, 4).toString());
+        jTextField4.setText(model.getValueAt(rowIndex, 5).toString());
+        jTextField5.setText(model.getValueAt(rowIndex, 6).toString());
+        jTextField6.setText(model.getValueAt(rowIndex, 7).toString());
+        jTextField7.setText(model.getValueAt(rowIndex, 8).toString());
+        jTextField8.setText(model.getValueAt(rowIndex, 9).toString());
+        String path = model.getValueAt(rowIndex, 10).toString();
+        imagePath = path;
+        jLabelImage.setIcon(imageAdjust(path, null)); //get image path and called imageAdjust method convert path to imageIcon...
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int id = Integer.parseInt(jTextField1.getText());
+        if (student.isIdExist(id)) {
+            student.delete(id);
+            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
+                "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
+            student.getStudentValue(jTable1, "");
+            clearStudent();
+        } else {
+            JOptionPane.showMessageDialog(this, "Student id doesn't exist");
+        }
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        if (SearchField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student id");
+        } else {
+            jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
+                "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
+            student.getStudentValue(jTable1, SearchField.getText());
+        }
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
+            "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
+        student.getStudentValue(jTable1, "");
+        SearchField.setText(null);
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("Students Infromation");
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            jTable1.print(JTable.PrintMode.FIT_WIDTH,header,footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    private ImageIcon imageAdjust(String path, byte[] pic) {
+        ImageIcon myImage = null;
+        if (path != null) {
+            myImage = new ImageIcon(path);
+        } else {
+            myImage = new ImageIcon(pic);
+        }
+        Image img = myImage.getImage();
+        Image newImage = img.getScaledInstance(jLabelImage.getWidth(), jLabelImage.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon icon = new ImageIcon(newImage);
+        return icon;
+    }
 
     /**
      * @param args the command line arguments
