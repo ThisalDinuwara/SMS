@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 public class Home extends javax.swing.JFrame {
 
     Student student = new Student();
+    Course course = new Course();
     int xx, xy;
     private String imagePath;
     private DefaultTableModel model;
@@ -706,6 +707,8 @@ public class Home extends javax.swing.JFrame {
         jPanel12.setBackground(new java.awt.Color(0, 0, 51));
         jPanel12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 4, true));
 
+        jTextField9.setEditable(false);
+        jTextField9.setBackground(new java.awt.Color(153, 153, 153));
         jTextField9.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -725,9 +728,19 @@ public class Home extends javax.swing.JFrame {
         jLabel16.setText("Student ID");
 
         jTextField10.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField10KeyTyped(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -755,6 +768,8 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
+        jTextField11.setEditable(false);
+        jTextField11.setBackground(new java.awt.Color(153, 153, 153));
         jTextField11.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
@@ -851,7 +866,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17))
@@ -880,7 +895,7 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jPanel15.setBackground(new java.awt.Color(0, 0, 51));
@@ -899,10 +914,20 @@ public class Home extends javax.swing.JFrame {
         btnSearch1.setMaximumSize(new java.awt.Dimension(112, 40));
         btnSearch1.setMinimumSize(new java.awt.Dimension(112, 40));
         btnSearch1.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
 
         btnRefresh1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnRefresh1.setText("Refresh");
         btnRefresh1.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnRefresh1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefresh1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -974,12 +999,27 @@ public class Home extends javax.swing.JFrame {
 
         btnAdd1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnAdd1.setText("Save");
+        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdd1ActionPerformed(evt);
+            }
+        });
 
         btnPrint1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnPrint1.setText("Print");
+        btnPrint1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint1ActionPerformed(evt);
+            }
+        });
 
         btnClear1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnClear1.setText("Clear");
+        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear1ActionPerformed(evt);
+            }
+        });
 
         btnLogout1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnLogout1.setText("Logout");
@@ -1076,7 +1116,10 @@ public class Home extends javax.swing.JFrame {
         jLabel50.setForeground(new java.awt.Color(255, 255, 255));
         jLabel50.setText("Course 2");
 
+        jTextField12.setEditable(false);
+        jTextField12.setBackground(new java.awt.Color(153, 153, 153));
         jTextField12.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField12.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel51.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
@@ -1095,7 +1138,10 @@ public class Home extends javax.swing.JFrame {
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel54.setText("Course 5");
 
+        jTextField13.setEditable(false);
+        jTextField13.setBackground(new java.awt.Color(153, 153, 153));
         jTextField13.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextField13.setForeground(new java.awt.Color(0, 0, 0));
         jTextField13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField13ActionPerformed(evt);
@@ -1114,6 +1160,11 @@ public class Home extends javax.swing.JFrame {
         jLabel56.setText("Student ID");
 
         jTextField14.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextField14.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField14KeyTyped(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton2.setText("Search");
@@ -1123,6 +1174,11 @@ public class Home extends javax.swing.JFrame {
         jLabel58.setText("Semester");
 
         jTextField15.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField15KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1161,16 +1217,28 @@ public class Home extends javax.swing.JFrame {
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Semester");
 
+        jTextField16.setEditable(false);
+        jTextField16.setBackground(new java.awt.Color(153, 153, 153));
         jTextField16.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jTextField17.setEditable(false);
+        jTextField17.setBackground(new java.awt.Color(153, 153, 153));
         jTextField17.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jTextField18.setEditable(false);
+        jTextField18.setBackground(new java.awt.Color(153, 153, 153));
         jTextField18.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jTextField19.setEditable(false);
+        jTextField19.setBackground(new java.awt.Color(153, 153, 153));
         jTextField19.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jTextField20.setEditable(false);
+        jTextField20.setBackground(new java.awt.Color(153, 153, 153));
         jTextField20.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
+        jTextField21.setEditable(false);
+        jTextField21.setBackground(new java.awt.Color(153, 153, 153));
         jTextField21.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
         jTextField22.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -1736,7 +1804,9 @@ public class Home extends javax.swing.JFrame {
 
     public void init() {
         tableViewStudent();
+        tableViewCourse();
         jTextField1.setText(String.valueOf(student.getMax()));
+        jTextField9.setText(String.valueOf(course.getMax()));
     }
 
     private void tableViewStudent() {
@@ -1746,6 +1816,15 @@ public class Home extends javax.swing.JFrame {
         jTable1.setShowGrid(true);
         jTable1.setGridColor(Color.black);
         jTable1.setBackground(Color.white);
+    }
+
+    private void tableViewCourse() {
+        course.getCourseValue(jTable2, "");
+        model = (DefaultTableModel) jTable2.getModel();
+        jTable2.setRowHeight(30);
+        jTable2.setShowGrid(true);
+        jTable2.setGridColor(Color.black);
+        jTable2.setBackground(Color.white);
     }
 
     private void clearStudent() {
@@ -1762,6 +1841,32 @@ public class Home extends javax.swing.JFrame {
         jLabelImage.setIcon(null);
         jTable1.clearSelection();
         imagePath = null;
+    }
+
+    public void clearCourse() {
+        jTextField9.setText(String.valueOf(course.getMax()));
+        jTextField10.setText(null);
+        jTextField11.setText(null);
+        jComboBox5.removeAllItems();
+        jComboBox6.setSelectedIndex(0);
+        jComboBox7.setSelectedIndex(0);
+        jComboBox8.setSelectedIndex(0);
+        jComboBox9.setSelectedIndex(0);
+        jComboBox10.setSelectedIndex(0);
+        jTable2.clearSelection();
+    }
+    
+    public void clearScore(){
+        jTextField14.setText(null);
+        jTextField15.setText(null);
+        jTextField13.setText(null);
+        jTextField12.setText(null);
+        jTextField16.setText(null);
+        jTextField17.setText(null);
+        jTextField18.setText(null);
+        jTextField19.setText(null);
+        jTextField20.setText(null);
+        jTextField21.setText(null);
     }
 
     public boolean isEmptyStudent() {
@@ -2059,11 +2164,122 @@ public class Home extends javax.swing.JFrame {
         try {
             MessageFormat header = new MessageFormat("Students Infromation");
             MessageFormat footer = new MessageFormat("Page{0,number,integer}");
-            jTable1.print(JTable.PrintMode.FIT_WIDTH,header,footer);
+            jTable1.print(JTable.PrintMode.FIT_WIDTH, header, footer);
         } catch (PrinterException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
+        clearCourse();
+    }//GEN-LAST:event_btnClear1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jTextField10.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student id");
+        } else {
+            int id = Integer.parseInt(jTextField10.getText());
+            if (course.getId(id)) {
+                jComboBox5.removeAllItems();
+                int semester = course.countSemester(id);
+                if (semester >= 0) {
+                    for (int i = 1; i <= semester + 1; i++) {
+                        jComboBox5.addItem(i + "");
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
+        if (jTextField11.getText().isEmpty() || jComboBox5.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(this, "Student id or semester number is missing");
+        } else {
+            int id = course.getMax();
+            int sid = Integer.parseInt(jTextField11.getText());
+            int semesterNo = Integer.parseInt(jComboBox5.getSelectedItem().toString());
+            String course1 = jComboBox6.getSelectedItem().toString();
+            String course2 = jComboBox7.getSelectedItem().toString();
+            String course3 = jComboBox8.getSelectedItem().toString();
+            String course4 = jComboBox9.getSelectedItem().toString();
+            String course5 = jComboBox10.getSelectedItem().toString();
+            if (course.isSemesterExist(sid, semesterNo)) {
+                JOptionPane.showMessageDialog(this, "This student has already taken semester " + semesterNo);
+            } else {
+                if (course.isCourseExist(sid, "course1", course1)) {
+                    JOptionPane.showMessageDialog(this, "This student has already taken" + course1 + "course");
+                } else {
+                    if (course.isCourseExist(sid, "course2", course2)) {
+                        JOptionPane.showMessageDialog(this, "This student has already taken" + course2 + "course");
+                    } else {
+                        if (course.isCourseExist(sid, "course3", course3)) {
+                            JOptionPane.showMessageDialog(this, "This student has already taken" + course3 + "course");
+                        } else {
+                            if (course.isCourseExist(sid, "course4", course4)) {
+                                JOptionPane.showMessageDialog(this, "This student has already taken" + course4 + "course");
+                            } else {
+                                if (course.isCourseExist(sid, "course5", course5)) {
+                                    JOptionPane.showMessageDialog(this, "This student has already taken" + course5 + "course");
+                                } else {
+                                    course.insert(id, sid, semesterNo, course1, course2, course3, course4, course5);
+                                    jTable2.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester", "Course1",
+                                        "Course2", "Course3", "Course4", "Course5"}));
+                                    student.getStudentValue(jTable1, "");
+                                    course.getCourseValue(jTable2, "");
+                                    clearCourse();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_btnAdd1ActionPerformed
+
+    private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField10KeyTyped
+
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        if (SearchField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student id");
+        } else {
+            jTable2.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester", "Course1",
+                "Course2", "Course3", "Course4", "Course5"}));
+            course.getCourseValue(jTable2, SearchField1.getText());
+        }
+    }//GEN-LAST:event_btnSearch1ActionPerformed
+
+    private void btnRefresh1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh1ActionPerformed
+        jTable2.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester", "Course1",
+            "Course2", "Course3", "Course4", "Course5"}));
+        course.getCourseValue(jTable2, "");
+        SearchField1.setText(null);
+    }//GEN-LAST:event_btnRefresh1ActionPerformed
+
+    private void btnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint1ActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("All Student Course Infromation");
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            jTable2.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPrint1ActionPerformed
+
+    private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField14KeyTyped
+
+    private void jTextField15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyTyped
+        if (!Character.isDigit(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField15KeyTyped
 
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
@@ -2233,7 +2449,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
+    public static javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
