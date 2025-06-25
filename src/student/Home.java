@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.print.PrinterException;
 import java.io.File;
 import java.text.MessageFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,10 +26,12 @@ public class Home extends javax.swing.JFrame {
 
     Student student = new Student();
     Course course = new Course();
+    Score score = new Score();
     int xx, xy;
     private String imagePath;
     private DefaultTableModel model;
     private int rowIndex;
+    NumberFormat nf = NumberFormat.getInstance();
 
     public Home() {
         initComponents();
@@ -147,17 +150,16 @@ public class Home extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jLabel57 = new javax.swing.JLabel();
         jTextField16 = new javax.swing.JTextField();
-        jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
-        jTextField19 = new javax.swing.JTextField();
-        jTextField20 = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
-        jTextField23 = new javax.swing.JTextField();
-        jTextField24 = new javax.swing.JTextField();
-        jTextField33 = new javax.swing.JTextField();
-        jTextField34 = new javax.swing.JTextField();
-        jTextField35 = new javax.swing.JTextField();
+        jTextCourse1 = new javax.swing.JTextField();
+        jTextCourse2 = new javax.swing.JTextField();
+        jTextCourse3 = new javax.swing.JTextField();
+        jTextCourse4 = new javax.swing.JTextField();
+        jTextCourse5 = new javax.swing.JTextField();
+        jTextScore1 = new javax.swing.JTextField();
+        jTextScore2 = new javax.swing.JTextField();
+        jTextScore3 = new javax.swing.JTextField();
+        jTextScore4 = new javax.swing.JTextField();
+        jTextScore5 = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
@@ -373,7 +375,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel13)
                         .addGap(66, 66, 66)
                         .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 80, Short.MAX_VALUE))
+                        .addGap(0, 86, Short.MAX_VALUE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -383,25 +385,28 @@ public class Home extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(62, 62, 62)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
                             .addComponent(jTextField2)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField3)
@@ -414,9 +419,8 @@ public class Home extends javax.swing.JFrame {
                                 .addGap(0, 152, Short.MAX_VALUE))
                             .addComponent(jTextField8)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,7 +432,7 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -510,7 +514,7 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1168,6 +1172,11 @@ public class Home extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel58.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
@@ -1221,49 +1230,45 @@ public class Home extends javax.swing.JFrame {
         jTextField16.setBackground(new java.awt.Color(153, 153, 153));
         jTextField16.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField17.setEditable(false);
-        jTextField17.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField17.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextCourse1.setEditable(false);
+        jTextCourse1.setBackground(new java.awt.Color(153, 153, 153));
+        jTextCourse1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField18.setEditable(false);
-        jTextField18.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField18.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextCourse2.setEditable(false);
+        jTextCourse2.setBackground(new java.awt.Color(153, 153, 153));
+        jTextCourse2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField19.setEditable(false);
-        jTextField19.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField19.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextCourse3.setEditable(false);
+        jTextCourse3.setBackground(new java.awt.Color(153, 153, 153));
+        jTextCourse3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField20.setEditable(false);
-        jTextField20.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField20.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextCourse4.setEditable(false);
+        jTextCourse4.setBackground(new java.awt.Color(153, 153, 153));
+        jTextCourse4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField21.setEditable(false);
-        jTextField21.setBackground(new java.awt.Color(153, 153, 153));
-        jTextField21.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextCourse5.setEditable(false);
+        jTextCourse5.setBackground(new java.awt.Color(153, 153, 153));
+        jTextCourse5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
 
-        jTextField22.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField22.setText("0.0");
+        jTextScore1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextScore1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextScore1.setText("0.0");
 
-        jTextField23.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField23.setText("0.0");
+        jTextScore2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextScore2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextScore2.setText("0.0");
 
-        jTextField24.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField24.setText("0.0");
+        jTextScore3.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextScore3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextScore3.setText("0.0");
 
-        jTextField33.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField33.setText("0.0");
+        jTextScore4.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextScore4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextScore4.setText("0.0");
 
-        jTextField34.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField34.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField34.setText("0.0");
-
-        jTextField35.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField35.setText("0.0");
+        jTextScore5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        jTextScore5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextScore5.setText("0.0");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -1288,22 +1293,21 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel20Layout.createSequentialGroup()
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                                    .addComponent(jTextField20, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField19, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField18, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField17, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField16, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(jTextCourse5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(jTextCourse4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextCourse3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextCourse2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextCourse1, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField22)
-                                    .addComponent(jTextField23)
-                                    .addComponent(jTextField24)
-                                    .addComponent(jTextField33)
-                                    .addComponent(jTextField34)
-                                    .addComponent(jTextField35)))
+                                    .addComponent(jTextScore1)
+                                    .addComponent(jTextScore2)
+                                    .addComponent(jTextScore3)
+                                    .addComponent(jTextScore4)
+                                    .addComponent(jTextScore5)))
                             .addComponent(jTextField12)
-                            .addComponent(jTextField13))
+                            .addComponent(jTextField13)
+                            .addComponent(jTextField16))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1323,34 +1327,33 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel57)
-                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCourse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextScore1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCourse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextScore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCourse3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextScore3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel53)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextCourse4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextScore4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextCourse5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextScore5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
 
         jPanel23.setBackground(new java.awt.Color(0, 0, 51));
@@ -1369,10 +1372,20 @@ public class Home extends javax.swing.JFrame {
         btnSearch2.setMaximumSize(new java.awt.Dimension(112, 40));
         btnSearch2.setMinimumSize(new java.awt.Dimension(112, 40));
         btnSearch2.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnSearch2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch2ActionPerformed(evt);
+            }
+        });
 
         btnRefresh2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnRefresh2.setText("Refresh");
         btnRefresh2.setPreferredSize(new java.awt.Dimension(109, 40));
+        btnRefresh2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefresh2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -1410,11 +1423,11 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Student ID", "Semester", "Course 1", "Score 1", "Course 2", "Score 2", "Course 3", "Score 3", "Course 4", "Score 4", "Course 5", "Score 5"
+                "ID", "Student ID", "Semester", "Course 1", "Score 1", "Course 2", "Score 2", "Course 3", "Score 3", "Course 4", "Score 4", "Course 5", "Score 5", "Average"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, true, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1422,6 +1435,11 @@ public class Home extends javax.swing.JFrame {
             }
         });
         jTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
@@ -1454,12 +1472,27 @@ public class Home extends javax.swing.JFrame {
 
         btnUpdate2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnUpdate2.setText("Update");
+        btnUpdate2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdate2ActionPerformed(evt);
+            }
+        });
 
         btnPrint2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnPrint2.setText("Print");
+        btnPrint2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint2ActionPerformed(evt);
+            }
+        });
 
         btnClear2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnClear2.setText("Clear");
+        btnClear2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear2ActionPerformed(evt);
+            }
+        });
 
         btnLogout2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnLogout2.setText("Logout");
@@ -1805,8 +1838,10 @@ public class Home extends javax.swing.JFrame {
     public void init() {
         tableViewStudent();
         tableViewCourse();
+        tableViewScore();
         jTextField1.setText(String.valueOf(student.getMax()));
         jTextField9.setText(String.valueOf(course.getMax()));
+        jTextField13.setText(String.valueOf(score.getMax()));
     }
 
     private void tableViewStudent() {
@@ -1825,6 +1860,15 @@ public class Home extends javax.swing.JFrame {
         jTable2.setShowGrid(true);
         jTable2.setGridColor(Color.black);
         jTable2.setBackground(Color.white);
+    }
+
+    private void tableViewScore() {
+        score.getScoreValue(jTable3, "");
+        model = (DefaultTableModel) jTable3.getModel();
+        jTable3.setRowHeight(30);
+        jTable3.setShowGrid(true);
+        jTable3.setGridColor(Color.black);
+        jTable3.setBackground(Color.white);
     }
 
     private void clearStudent() {
@@ -1855,18 +1899,25 @@ public class Home extends javax.swing.JFrame {
         jComboBox10.setSelectedIndex(0);
         jTable2.clearSelection();
     }
-    
-    public void clearScore(){
+
+    public void clearScore() {
+        jTextField13.setText(String.valueOf(score.getMax()));
         jTextField14.setText(null);
         jTextField15.setText(null);
         jTextField13.setText(null);
         jTextField12.setText(null);
         jTextField16.setText(null);
-        jTextField17.setText(null);
-        jTextField18.setText(null);
-        jTextField19.setText(null);
-        jTextField20.setText(null);
-        jTextField21.setText(null);
+        jTextCourse1.setText(null);
+        jTextCourse2.setText(null);
+        jTextCourse3.setText(null);
+        jTextCourse4.setText(null);
+        jTextCourse5.setText(null);
+        jTextScore1.setText("0.0");
+        jTextScore2.setText("0.0");
+        jTextScore3.setText("0.0");
+        jTextScore4.setText("0.0");
+        jTextScore5.setText("0.0");
+        jTable3.clearSelection();
     }
 
     public boolean isEmptyStudent() {
@@ -1934,9 +1985,68 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField13ActionPerformed
 
     private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
-        // TODO add your handling code here:
+        if (!jTextField12.getText().isEmpty()) {
+            if (!score.isIdExist(Integer.parseInt(jTextField13.getText()))) {
+                int sid = Integer.parseInt(jTextField12.getText());
+                int semesterNo = Integer.parseInt(jTextField16.getText());
+
+                // Check if semester score does NOT exist (opposite of your original logic)
+                if (!score.isSidSemesterNoExist(sid, semesterNo)) {
+                    if (isNumeric(jTextScore1.getText()) && isNumeric(jTextScore2.getText())
+                            && isNumeric(jTextScore3.getText()) && isNumeric(jTextScore4.getText())
+                            && isNumeric(jTextScore5.getText())) {
+
+                        int id = score.getMax();
+                        String course1 = jTextCourse1.getText();
+                        String course2 = jTextCourse2.getText();
+                        String course3 = jTextCourse3.getText();
+                        String course4 = jTextCourse4.getText();
+                        String course5 = jTextCourse5.getText();
+                        double score1 = Double.parseDouble(jTextScore1.getText());
+                        double score2 = Double.parseDouble(jTextScore2.getText());
+                        double score3 = Double.parseDouble(jTextScore3.getText());
+                        double score4 = Double.parseDouble(jTextScore4.getText());
+                        double score5 = Double.parseDouble(jTextScore5.getText());
+                        double average = (score1 + score2 + score3 + score4 + score5) / 5;
+
+                        nf.setMaximumFractionDigits(2);
+                        score.insert(id, sid, semesterNo, course1, course2, course3, course4, course5,
+                                score1, score2, score3, score4, score5,
+                                Double.parseDouble(nf.format(average)));
+
+                        jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                            "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                            "Course4", "Score4", "Course5", "Score5", "Average"}));
+                        score.getScoreValue(jTable3, "");
+                        clearScore();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Please enter valid numeric scores for all courses");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Semester " + semesterNo + " score already added");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Score id already exists");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "No student selected");
+        }
     }//GEN-LAST:event_btnAdd2ActionPerformed
 
+    private boolean isNumeric(String s) {
+        try {
+            double d = Double.parseDouble(s);
+            if (d >= 0.0 && d <= 4.0) {
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(this, "Please enter a valid value, it must be between 0.0 to 4.0");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "" + e);
+        }
+        return false;
+    }
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
@@ -2145,7 +2255,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         if (SearchField.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a student id");
+            JOptionPane.showMessageDialog(this, "Search field is empty");
         } else {
             jTable1.setModel(new DefaultTableModel(null, new Object[]{"Student ID", "Student name", "Date of Birth", "Gender",
                 "Email", "Phone Number", "Father's Name", "Mother's Name", "Address Line 1", "Address Line 2", "Image Path"}));
@@ -2244,7 +2354,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
         if (SearchField1.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter a student id");
+            JOptionPane.showMessageDialog(this, "Search field is empty");
         } else {
             jTable2.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester", "Course1",
                 "Course2", "Course3", "Course4", "Course5"}));
@@ -2280,6 +2390,97 @@ public class Home extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField15KeyTyped
+
+    private void btnClear2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear2ActionPerformed
+        clearScore();
+    }//GEN-LAST:event_btnClear2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String sidText = jTextField14.getText().trim();
+        String semText = jTextField15.getText().trim();
+
+        if (sidText.isEmpty() || semText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Student ID or Semester number is missing");
+        } else {
+            try {
+                int sid = Integer.parseInt(sidText);
+                int semNo = Integer.parseInt(semText);
+                score.getDetails(sid, semNo);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Please enter valid numbers for Student ID and Semester");
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        model = (DefaultTableModel) jTable3.getModel();
+        rowIndex = jTable3.getSelectedRow();
+        jTextField13.setText(model.getValueAt(rowIndex, 0).toString());
+        jTextField12.setText(model.getValueAt(rowIndex, 1).toString());
+        jTextField16.setText(model.getValueAt(rowIndex, 2).toString());
+
+        jTextCourse1.setText(model.getValueAt(rowIndex, 3).toString());
+        jTextCourse2.setText(model.getValueAt(rowIndex, 5).toString());
+        jTextCourse3.setText(model.getValueAt(rowIndex, 7).toString());
+        jTextCourse4.setText(model.getValueAt(rowIndex, 9).toString());
+        jTextCourse5.setText(model.getValueAt(rowIndex, 11).toString());
+
+        jTextScore1.setText(model.getValueAt(rowIndex, 4).toString());
+        jTextScore2.setText(model.getValueAt(rowIndex, 6).toString());
+        jTextScore3.setText(model.getValueAt(rowIndex, 8).toString());
+        jTextScore4.setText(model.getValueAt(rowIndex, 10).toString());
+        jTextScore5.setText(model.getValueAt(rowIndex, 12).toString());
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void btnUpdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate2ActionPerformed
+        int id = Integer.parseInt(jTextField13.getText());
+        if (score.isIdExist(id)) {
+            double score1 = Double.parseDouble(jTextScore1.getText());
+            double score2 = Double.parseDouble(jTextScore2.getText());
+            double score3 = Double.parseDouble(jTextScore3.getText());
+            double score4 = Double.parseDouble(jTextScore4.getText());
+            double score5 = Double.parseDouble(jTextScore5.getText());
+            double average = (score1 + score2 + score3 + score4 + score5) / 5;
+            nf.setMaximumFractionDigits(2);
+            score.update(id, score1, score2, score3, score4, score5, Double.parseDouble(nf.format(average)));
+            jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                "Course4", "Score4", "Course5", "Score5", "Average"}));
+            score.getScoreValue(jTable3, "");
+            clearScore();
+        } else {
+            JOptionPane.showMessageDialog(this, "Score id doesn't exist");
+        }
+    }//GEN-LAST:event_btnUpdate2ActionPerformed
+
+    private void btnPrint2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint2ActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("Student Scores");
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            jTable3.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPrint2ActionPerformed
+
+    private void btnSearch2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch2ActionPerformed
+        if (SearchField2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Search field is empty");
+        } else {
+            jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                "Course4", "Score4", "Course5", "Score5", "Average"}));
+            score.getScoreValue(jTable3, SearchField2.getText());
+        }
+    }//GEN-LAST:event_btnSearch2ActionPerformed
+
+    private void btnRefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh2ActionPerformed
+        jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                "Course4", "Score4", "Course5", "Score5", "Average"}));
+            score.getScoreValue(jTable3, "");
+            SearchField2.setText(null);
+    }//GEN-LAST:event_btnRefresh2ActionPerformed
 
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
@@ -2447,33 +2648,32 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable5;
+    public static javax.swing.JTextField jTextCourse1;
+    public static javax.swing.JTextField jTextCourse2;
+    public static javax.swing.JTextField jTextCourse3;
+    public static javax.swing.JTextField jTextCourse4;
+    public static javax.swing.JTextField jTextCourse5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     public static javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
+    public static javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
+    public static javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField20;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
-    private javax.swing.JTextField jTextField23;
-    private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField33;
-    private javax.swing.JTextField jTextField34;
-    private javax.swing.JTextField jTextField35;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextScore1;
+    private javax.swing.JTextField jTextScore2;
+    private javax.swing.JTextField jTextScore3;
+    private javax.swing.JTextField jTextScore4;
+    private javax.swing.JTextField jTextScore5;
     // End of variables declaration//GEN-END:variables
 }
