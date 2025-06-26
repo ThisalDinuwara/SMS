@@ -27,6 +27,7 @@ public class Home extends javax.swing.JFrame {
     Student student = new Student();
     Course course = new Course();
     Score score = new Score();
+    MarksSheet marksSheet = new MarksSheet();
     int xx, xy;
     private String imagePath;
     private DefaultTableModel model;
@@ -50,6 +51,8 @@ public class Home extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        txtTime = new javax.swing.JLabel();
+        txtDate = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -220,6 +223,14 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(127, 170, 255));
         jLabel1.setText("STUDENT  MANAGEMENT  SYSTEM");
 
+        txtTime.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        txtTime.setForeground(new java.awt.Color(255, 255, 255));
+        txtTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        txtDate.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        txtDate.setForeground(new java.awt.Color(255, 255, 255));
+        txtDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -227,13 +238,22 @@ public class Home extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(413, 413, 413))
+                .addGap(302, 302, 302)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -331,6 +351,16 @@ public class Home extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(127, 170, 255));
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 204, 255), 2, true));
+
+        jLabelImage.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabelImageAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1595,6 +1625,11 @@ public class Home extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton3.setText("Search");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -1680,11 +1715,11 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Student ID", "Semester", "Course 1", "Course 2", "Course 3", "Course 4", "Course 5"
+                "ID", "Student ID", "Semester", "Course 1", "Score 1", "Course 2", "Score 2", "Course 3", "Score 3", "Course 4", "Score 4", "Course 5", "Score 5", "Average"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -1715,9 +1750,19 @@ public class Home extends javax.swing.JFrame {
 
         btnPrint3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnPrint3.setText("Print");
+        btnPrint3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrint3ActionPerformed(evt);
+            }
+        });
 
         btnClear3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnClear3.setText("Clear");
+        btnClear3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear3ActionPerformed(evt);
+            }
+        });
 
         btnLogout3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnLogout3.setText("Logout");
@@ -1836,9 +1881,11 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void init() {
+        setTime();
         tableViewStudent();
         tableViewCourse();
         tableViewScore();
+        tableViewScoreView();
         jTextField1.setText(String.valueOf(student.getMax()));
         jTextField9.setText(String.valueOf(course.getMax()));
         jTextField13.setText(String.valueOf(score.getMax()));
@@ -1869,6 +1916,14 @@ public class Home extends javax.swing.JFrame {
         jTable3.setShowGrid(true);
         jTable3.setGridColor(Color.black);
         jTable3.setBackground(Color.white);
+    }
+
+    private void tableViewScoreView() {
+        model = (DefaultTableModel) jTable5.getModel();
+        jTable5.setRowHeight(30);
+        jTable5.setShowGrid(true);
+        jTable5.setGridColor(Color.black);
+        jTable5.setBackground(Color.white);
     }
 
     private void clearStudent() {
@@ -1986,47 +2041,51 @@ public class Home extends javax.swing.JFrame {
 
     private void btnAdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd2ActionPerformed
         if (!jTextField12.getText().isEmpty()) {
-            if (!score.isIdExist(Integer.parseInt(jTextField13.getText()))) {
-                int sid = Integer.parseInt(jTextField12.getText());
-                int semesterNo = Integer.parseInt(jTextField16.getText());
+            String idText = jTextField13.getText().trim();
+            if (!idText.isEmpty() && isNumeric(idText)) {
+                if (!score.isIdExist(Integer.parseInt(idText))) {
+                    int sid = Integer.parseInt(jTextField12.getText());
+                    int semesterNo = Integer.parseInt(jTextField16.getText());
 
-                // Check if semester score does NOT exist (opposite of your original logic)
-                if (!score.isSidSemesterNoExist(sid, semesterNo)) {
-                    if (isNumeric(jTextScore1.getText()) && isNumeric(jTextScore2.getText())
-                            && isNumeric(jTextScore3.getText()) && isNumeric(jTextScore4.getText())
-                            && isNumeric(jTextScore5.getText())) {
+                    if (!score.isSidSemesterNoExist(sid, semesterNo)) {
+                        if (isNumeric(jTextScore1.getText()) && isNumeric(jTextScore2.getText())
+                                && isNumeric(jTextScore3.getText()) && isNumeric(jTextScore4.getText())
+                                && isNumeric(jTextScore5.getText())) {
 
-                        int id = score.getMax();
-                        String course1 = jTextCourse1.getText();
-                        String course2 = jTextCourse2.getText();
-                        String course3 = jTextCourse3.getText();
-                        String course4 = jTextCourse4.getText();
-                        String course5 = jTextCourse5.getText();
-                        double score1 = Double.parseDouble(jTextScore1.getText());
-                        double score2 = Double.parseDouble(jTextScore2.getText());
-                        double score3 = Double.parseDouble(jTextScore3.getText());
-                        double score4 = Double.parseDouble(jTextScore4.getText());
-                        double score5 = Double.parseDouble(jTextScore5.getText());
-                        double average = (score1 + score2 + score3 + score4 + score5) / 5;
+                            int id = score.getMax();
+                            String course1 = jTextCourse1.getText();
+                            String course2 = jTextCourse2.getText();
+                            String course3 = jTextCourse3.getText();
+                            String course4 = jTextCourse4.getText();
+                            String course5 = jTextCourse5.getText();
+                            double score1 = Double.parseDouble(jTextScore1.getText());
+                            double score2 = Double.parseDouble(jTextScore2.getText());
+                            double score3 = Double.parseDouble(jTextScore3.getText());
+                            double score4 = Double.parseDouble(jTextScore4.getText());
+                            double score5 = Double.parseDouble(jTextScore5.getText());
+                            double average = (score1 + score2 + score3 + score4 + score5) / 5;
 
-                        nf.setMaximumFractionDigits(2);
-                        score.insert(id, sid, semesterNo, course1, course2, course3, course4, course5,
-                                score1, score2, score3, score4, score5,
-                                Double.parseDouble(nf.format(average)));
+                            nf.setMaximumFractionDigits(2);
+                            score.insert(id, sid, semesterNo, course1, course2, course3, course4, course5,
+                                    score1, score2, score3, score4, score5,
+                                    Double.parseDouble(nf.format(average)));
 
-                        jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
-                            "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
-                            "Course4", "Score4", "Course5", "Score5", "Average"}));
-                        score.getScoreValue(jTable3, "");
-                        clearScore();
+                            jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                                "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                                "Course4", "Score4", "Course5", "Score5", "Average"}));
+                            score.getScoreValue(jTable3, "");
+                            clearScore();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Please enter valid numeric scores for all courses");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(this, "Please enter valid numeric scores for all courses");
+                        JOptionPane.showMessageDialog(this, "Semester " + semesterNo + " score already added");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Semester " + semesterNo + " score already added");
+                    JOptionPane.showMessageDialog(this, "Score id already exists");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Score id already exists");
+                JOptionPane.showMessageDialog(this, "Please enter a valid numeric Score ID");
             }
         } else {
             JOptionPane.showMessageDialog(this, "No student selected");
@@ -2050,6 +2109,7 @@ public class Home extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
+            new Login().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
@@ -2057,6 +2117,7 @@ public class Home extends javax.swing.JFrame {
     private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
+            new Login().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnLogout1ActionPerformed
@@ -2064,6 +2125,7 @@ public class Home extends javax.swing.JFrame {
     private void btnLogout2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout2ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
+            new Login().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnLogout2ActionPerformed
@@ -2071,6 +2133,7 @@ public class Home extends javax.swing.JFrame {
     private void btnLogout3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout3ActionPerformed
         int a = JOptionPane.showConfirmDialog(this, "Do you want to logout now?", "Select", JOptionPane.YES_NO_OPTION);
         if (a == 0) {
+            new Login().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_btnLogout3ActionPerformed
@@ -2476,12 +2539,74 @@ public class Home extends javax.swing.JFrame {
 
     private void btnRefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefresh2ActionPerformed
         jTable3.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
-                "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
-                "Course4", "Score4", "Course5", "Score5", "Average"}));
-            score.getScoreValue(jTable3, "");
-            SearchField2.setText(null);
+            "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+            "Course4", "Score4", "Course5", "Score5", "Average"}));
+        score.getScoreValue(jTable3, "");
+        SearchField2.setText(null);
     }//GEN-LAST:event_btnRefresh2ActionPerformed
 
+    private void jLabelImageAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabelImageAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelImageAncestorAdded
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jTextField25.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter a student id");
+        } else {
+            int sid = Integer.parseInt(jTextField25.getText());
+            if (marksSheet.isIdExist(sid)) {
+                jTable5.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+                    "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+                    "Course4", "Score4", "Course5", "Score5", "Average"}));
+                marksSheet.getScoreValue(jTable5, sid);
+                String cgpa = String.valueOf(String.format("%.2f", marksSheet.getCGPA(sid)));
+                jLabel27.setText("CGPA: " + cgpa);
+            } else {
+                JOptionPane.showMessageDialog(this, "No scores found");
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnClear3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear3ActionPerformed
+        jTextField25.setText(null);
+        jLabel27.setText("CGPA: 0.0");
+        jTable5.setModel(new DefaultTableModel(null, new Object[]{"ID", "Student ID", "Semester",
+            "Course1", "Score1", "Course2", "Score2", "Course3", "Score3",
+            "Course4", "Score4", "Course5", "Score5", "Average"}));
+    }//GEN-LAST:event_btnClear3ActionPerformed
+
+    private void btnPrint3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrint3ActionPerformed
+        try {
+            MessageFormat header = new MessageFormat("Marks Sheet   Student ID: "+jTextField25.getText()+"    "+jLabel27.getText());
+            MessageFormat footer = new MessageFormat("Page{0,number,integer}");
+            jTable5.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+        } catch (PrinterException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnPrint3ActionPerformed
+
+    //display current time and date
+    public void setTime(){
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+                while (true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    Date date = new Date();
+                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
+                    SimpleDateFormat df = new SimpleDateFormat("EEEE, dd-MM-yyyy");
+                    String time = tf.format(date);
+                    txtTime.setText(time.split(" ")[0] + " " + time.split(" ")[1]);
+                    txtDate.setText(df.format(date));
+                }
+            }
+        }).start();
+    }
+    
     private ImageIcon imageAdjust(String path, byte[] pic) {
         ImageIcon myImage = null;
         if (path != null) {
@@ -2493,41 +2618,6 @@ public class Home extends javax.swing.JFrame {
         Image newImage = img.getScaledInstance(jLabelImage.getWidth(), jLabelImage.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(newImage);
         return icon;
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Home().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2675,5 +2765,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextField jTextScore3;
     private javax.swing.JTextField jTextScore4;
     private javax.swing.JTextField jTextScore5;
+    private javax.swing.JLabel txtDate;
+    private javax.swing.JLabel txtTime;
     // End of variables declaration//GEN-END:variables
 }
